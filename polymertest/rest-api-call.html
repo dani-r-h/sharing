@@ -1,0 +1,39 @@
+<link rel="import" href="/bower_components/polymer/polymer.html"/>
+<link rel="import" href="/bower_components/iron-ajax/iron-ajax.html">
+
+<dom-module id="rest-api-call">
+
+  <template>
+    <iron-ajax
+      auto
+      url="https://jsonplaceholder.typicode.com/posts/1"
+      handle-as="json"
+      last-response="{{response}}"
+      id="xhr">
+    </iron-ajax>
+
+    <p>UserId: {{response.userId}}</p>
+    <p>Id: {{response.id}}</p>
+    <p>Title: {{response.title}}</p>
+    <p>Body: {{response.body}}</p>
+
+  </template>
+
+  <script>
+   class RestApiCall extends Polymer.Element {
+
+      static get is() { return 'rest-api-call'; }
+
+      static get properties() {
+            return {
+              response: {
+                type: String
+              }
+            }
+          }
+   }
+
+   customElements.define('rest-api-call', RestApiCall);
+ </script>
+
+</dom-module>
